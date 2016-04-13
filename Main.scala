@@ -105,10 +105,10 @@ object Main {
       .reduceByKey(_+_) // counts the times each advertiser used a specific publisher, by geography
       .sortBy(_._2, false) // sorts by desc order
       .map(x => {
-      val countryCode = x._1._1
-      val publisherDomain = x._1._2
-      val advertiserName = x._1._3
-      val totUsesOfPubDomByAdvert = x._2
+       val countryCode = x._1._1
+       val publisherDomain = x._1._2
+       val advertiserName = x._1._3
+       val totUsesOfPubDomByAdvert = x._2
 
       ((countryCode, publisherDomain), (advertiserName, totUsesOfPubDomByAdvert))
       })
@@ -141,20 +141,20 @@ object Main {
       })
       .reduceByKey(_+_) // counts the times each advertiser used a mediator, by geography
       .map(x => {
-      val countryCode = x._1._1
-      val firstMediator = x._1._2
-      val advertiserName = x._1._3
-      val totUseOfMediatorByAdvert = x._2
+       val countryCode = x._1._1
+       val firstMediator = x._1._2
+       val advertiserName = x._1._3
+       val totUseOfMediatorByAdvert = x._2
 
       ((countryCode, firstMediator), (advertiserName, totUseOfMediatorByAdvert))
     })
       .groupByKey() // groups by geo and mediator
       .sortBy(_._2.map(x => x._2), false) // sorts by desc order
       .map(x => {
-      val countryCode = x._1._1
-      val firstMediator = x._1._2
-      val advertiserAndCount = x._2
-      val totalMediatorCount = x._2.map(x => x._2).reduce(_+_)
+       val countryCode = x._1._1
+       val firstMediator = x._1._2
+       val advertiserAndCount = x._2
+       val totalMediatorCount = x._2.map(x => x._2).reduce(_+_)
 
       (countryCode, (firstMediator, totalMediatorCount, advertiserAndCount))
     })
