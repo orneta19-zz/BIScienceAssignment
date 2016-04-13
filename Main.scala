@@ -17,7 +17,7 @@ object Main {
 
     val BISCienceData = sc.textFile(inputPath)
       .map(x => {
-        val replaced = x.replaceAll("\"", "") //replaced all apostrophes for easier comprehension
+        val replaced = x.replaceAll("\"", "") // replaced all apostrophes for easier comprehension
         (replaced)
       })
 
